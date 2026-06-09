@@ -16,7 +16,7 @@ jobs:
     # This is the key part for double confirmation.
     # GitHub will require manual approval before this job runs.
     environment: 
-      name: production
+      name: Production
       url: https://invest.plantshop.me
 
     steps:
