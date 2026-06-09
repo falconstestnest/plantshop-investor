@@ -1,0 +1,48 @@
+name: Deploy to Live FTP
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm:
+        description: 'Type "DEPLOY TO LIVE FTP" to confirm'
+        required: true
+        default: ''
+
+jobs:
+  deploy:
+    name: Deploy to Live FTP (requires approval)
+    runs-on: ubuntu-latest
+
+    # This is the key part for double confirmation.
+    # GitHub will require manual approval before this job runs.
+    environment: 
+      name: production
+      url: https://invest.plantshop.me
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Verify manual confirmation input
+        run: |
+          if [ "${{ github.event.inputs.confirm }}" != "DEPLOY TO LIVE FTP" ]; then
+            echo "❌ Confirmation phrase did not match."
+            exit 1
+          fi
+          echo "✅ Manual confirmation phrase accepted."
+
+      - name: Upload to Live FTP
+        env:
+          FTP_HOST: 13.202.141.247
+          FTP_USER: ${{ secrets.FTP_USER }}
+          FTP_PASS: ${{ secrets.FTP_PASS }}
+        run: |
+          echo "Uploading public/index.html to live FTP..."
+          curl -T public/index.html \
+            -u "${FTP_USER}:${FTP_PASS}" \
+            "ftp://${FTP_HOST}/index.html" \
+            --ftp-create-dirs \
+            --silent --show-error --fail
+
+          echo "✅ Successfully deployed to live FTP."
+          echo "Remember to hard refresh or wait for Cloudflare cache."
