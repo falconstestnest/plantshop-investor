@@ -32,7 +32,7 @@ Use this map before editing any section so you know what belongs where.
 
 ## Section 03 — Market Opportunity in UAE & GCC
 
-**Current heading**: `03 Market Opportunity in UAE & GCC`
+**Current heading**: `03 UAE & GCC Market Dynamics`
 
 **ID**: `#opportunity`
 
