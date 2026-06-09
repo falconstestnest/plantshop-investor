@@ -85,3 +85,17 @@ vercel dev
 ```
 
 This gives you a local preview without touching GitHub or FTP.
+
+---
+
+## Documentation
+
+This project now includes four core documentation files that define how the site is built, edited, and deployed:
+
+- **DESIGN_SYSTEM.md** — Fonts, colors, spacing, cards, headings, and dark/light section rules. Read this before any visual or structural work.
+- **EDITING_RULES.md** — Safe vs forbidden edits, how to change text, add sections, update links, and the mandatory single-pass rule (Copy / SEO / UX / Visual / Technical).
+- **SECTION_MAP.md** — Detailed map of every section (01 Hero through the final CTA), what it contains, and its purpose.
+- **DEPLOYMENT_CHECKLIST.md** — Step-by-step checklist that must be followed before every push and before every FTP sync.
+
+**Always consult these files** before making changes. They exist to prevent the kind of mixed edits that previously caused layout and duplication problems.
+
